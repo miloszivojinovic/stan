@@ -1,0 +1,8 @@
+node_modules/
+dist/
+tools/.venv/
+__pycache__/
+*.pyc
+.cache/
+# original Google Drive download: duplicates source/ and the extracted renders
+drive-download-*/
