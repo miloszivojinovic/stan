@@ -4,8 +4,14 @@ Goal: a browser-based, true-to-scale 3D model of an apartment, built from an int
 (dimensioned plans plus photoreal renders), so the owner can walk through it and check proportions,
 finishes and lighting. Labels in the source files are Serbian; docs/room-notes.md has a glossary.
 
-**Status: nothing is built yet.** This folder is a handoff from a planning chat. Read this file, then
-docs/room-notes.md, then open reference/contact-sheets/ and reference/plans/ before proposing anything.
+**Status (2026-11-23):** plan geometry is extracted and validated for all rooms; the viewer (src/, see
+docs/viewer.md) has every v1 scene: the open-plan hallway/living/dining/kitchen, work room, bedroom, bathroom and
+toilet, each compared with all of its renders (debug/compare/). Read this file, then docs/room-notes.md and
+docs/viewer.md before changing anything. Render analyses per room are in data/estimates/ (note: the designer modelled
+each room with a different ceiling height, 2.34-2.67 m, and the open-plan scene has a lowered living-room ceiling; the
+owner's real height is 2.40 m everywhere). Open with the owner: the island top is 0.77 m (13 cm under the 0.90 kitchen
+worktop) in the renders; whether the living-room ceiling is really lowered; render p17's and p03's viewpoints are
+weakly determined.
 
 ## What is here
 
@@ -61,6 +67,15 @@ Pixel measurement agrees with the labelled dimensions to within 1-2 cm:
    standard sizes.
 7. **Revision status**: five of the six render PDFs were titled IZMENA (revision); the layout PDF and the toilet
    renders were not. Ask whether the plans match the latest revision.
+
+**Answered by the owner on 2026-11-20** (data/owner-facts.json, tag these `"source": "owner"`): ceiling 2.40 m in every
+room; standard interior doors; interior walls 15 cm; every PDF is accurate and current; children's room gets no scene,
+only its door is shown. Page-1 doors (debug/p1-doors-question.png): I = work room, J = toilet, N = bathroom,
+O = bedroom, P = children's room. The front door is the first thing on the hallway's top-left wall. Where a label and
+the drawing disagree (dining table, children's desk, boiler cabinet), the label wins.
+
+Plan geometry is extracted by `tools/extract_geometry.py` (vector edges from the PDF, raster only for classification)
+into data/plan-geometry.json; the validation report is debug/validation.md.
 
 Every value in data/ that was not read from a plan or a label must carry `"source": "estimated"` or `"assumed"`,
 and the viewer needs an Assumptions panel that lists them.

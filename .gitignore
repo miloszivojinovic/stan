@@ -6,3 +6,6 @@ __pycache__/
 .cache/
 # original Google Drive download: duplicates source/ and the extracted renders
 drive-download-*/
+
+# viewer screenshots and comparison sheets (about 170 MB); tools/snap.mjs and tools/compare.py remake them
+debug/compare/
